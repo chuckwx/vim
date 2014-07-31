@@ -47,10 +47,11 @@ function s:set_keymap_c()
 	nmap <Tab>h			istatic int (void)<CR>{<CR>return 0;<CR><Backspace>}<CR><Esc>kkkk$hhhhhi
 	nmap h<Tab>			<Tab>h
 	nmap <Tab>m			iint main(int argc, char *argv[])<CR>{<CR><CR>return 0;<CR><Backspace>}<Esc>ggi#include <stdio.h><CR><CR><Esc><C-o>kkk$a<CR>
-	nmap <Tab>p			i<CR>printf(" Jolin.Zhang LOG %s %d\n", __func__, __LINE__);<CR><Esc>
+	nmap <Tab>p			k$a<CR>printf(" Jolin.Zhang LOG %s %d\n", __func__, __LINE__);<CR><Esc>
 	nmap m<Tab>			<Tab>m
 	nmap <Tab>in		i#include <><Left>
 	nmap <Tab>de		i#define<Space>
+	nmap <Tab>=			ggv<s-g>=<Esc>
 endfunction
 
 function s:set_keymap_cpp()
