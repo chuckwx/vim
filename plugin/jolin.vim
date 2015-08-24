@@ -22,13 +22,13 @@ set   autoread
 set   autowrite
 set   background=dark
 set   backspace=indent,eol,start
-set nobackup
+set   nobackup
 set   cindent
 set   cinoptions=:0
 set   completeopt=longest,menuone
 set   cursorline
 set   encoding=utf-8
-set noexpandtab
+set   noexpandtab
 set   fileencodings=utf-8,gb2312,gbk,gb18030,chinese
 set   fileformat=unix
 set   foldenable
@@ -162,7 +162,7 @@ nmap  <F2> :TlistToggle<cr>
 nmap  <F3> :NERDTreeToggle<cr>
 nmap  <F4> :MRU<cr>
 nmap  <F5> <Plug>LookupFile<cr>
-" nmap  <F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*.c **/*.h<cr><C-o>:cw<cr>
+nmap  <F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*.cpp **/*.c **/*.h **/*.py **/*.S<cr><C-o>:cw<cr>
 nmap  <F9> :call RunShell("Generate tags", "ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .")<cr>
 nmap <F10> :call HLUDSync()<cr>
 nmap <F11> :call RunShell("Generate filename tags", "~/.vim/shell/genfiletags.sh")<cr>
@@ -180,3 +180,4 @@ nmap <leader>zz <C-w>o
 nmap <leader>gs :GetScripts<cr>
 
 let c_space_errors = 1
+set expandtab

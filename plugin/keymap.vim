@@ -46,8 +46,8 @@ function s:set_keymap_c()
 	nmap <Tab>u			iunion <CR>{<CR>};<CR><Esc>kkk$a
 	nmap <Tab>h			istatic int (void)<CR>{<CR>return 0;<CR><Backspace>}<CR><Esc>kkkk$hhhhhi
 	nmap h<Tab>			<Tab>h
-	nmap <Tab>m			iint main(int argc, char *argv[])<CR>{<CR><CR>return 0;<CR><Backspace>}<Esc>ggi#include <stdio.h><CR><CR><Esc><C-o>kkk$a<CR>
-	nmap <Tab>p			$a<CR>#ifdef JOLIN_DEBUG<CR>printf("%s %d\n", __func__, __LINE__);<CR>#endif<Esc>
+	nmap <Tab>m			iint main(int argc, char *argv[])<CR>{<CR><CR>return 0;<CR>}<Esc>ggi#include <stdio.h><CR><CR><Esc><C-o>kkk$a<CR>
+	nmap <Tab>p			$a<CR>printf("\033[31m jolin log   : \033[0m" "%s %s %d %s\n", __FILE__, __func__, __LINE__, strerror(errno));<Esc>
 	nmap m<Tab>			<Tab>m
 	nmap <Tab>in		i#include <><Left>
 	nmap <Tab>de		i#define<Space>
@@ -56,17 +56,20 @@ function s:set_keymap_c()
 endfunction
 
 function s:set_keymap_cpp()
+	set  expandtab
 	call s:set_keymap_c()
 	nmap <Tab>f		k$a<CR>for (int i = 0; i < ; i++)<CR>{<CR>}<Esc>kk$hhhhhi
 	nmap <Tab>cl	iclass <CR>{<CR><Backspace>private:<CR><CR><CR><Backspace>public:<CR><CR>};<Esc>kkkkkkk$a
 endfunction
 
 function s:set_keymap_java()
+    set expandtab
 	call s:set_keymap_cpp()
 	nmap <Tab>cl	ipublic class <CR>{<CR>}<Esc>kk$a
 endfunction
 
 function s:set_keymap_asm()
+    set expandtab
 	map \\			:'<,'>s/^\(\s*\);\+\s*/\1/g<CR>:set nohls<CR>
 	vmap /			:s/^\(\s*\)\(.\+\)/\1; \2/g<CR>:set nohls<CR>
 	vmap \\			:s/^\(\s*\);\+\s*/\1/g<CR>:set nohls<CR>
@@ -74,6 +77,7 @@ function s:set_keymap_asm()
 endfunction
 
 function s:set_keymap_vim()
+    set expandtab
 	map \\			:'<,'>s/^\(\s*\)"\+\s*/\1/g<CR>:set nohls<CR>
 	vmap /			:s/^\(\s*\)\(.\+\)/\1" \2/g<CR>:set nohls<CR>
 	vmap \\			:s/^\(\s*\)"\+\s*/\1/g<CR>:set nohls<CR>
@@ -90,6 +94,7 @@ function s:set_keymap_make()
 endfunction
 
 function s:set_keymap_python()
+	set  expandtab
 	call s:set_keymap_sh()
 endfunction
 
@@ -100,6 +105,7 @@ if has("autocmd")
 	autocmd FileType asm	call s:set_keymap_asm()
 	autocmd FileType vim	call s:set_keymap_vim()
 	autocmd FileType sh		call s:set_keymap_sh()
+	autocmd FileType qml	call s:set_keymap_sh()
 	autocmd FileType make	call s:set_keymap_make()
 	autocmd FileType python	call s:set_keymap_python()
 endif
